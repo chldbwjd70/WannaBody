@@ -9,7 +9,7 @@
             <tr>
                 <th scope="col" style="font-size: 16px">FAQ</th>
                 <th scope="col" style="font-size: 16px">제목</th>
-                <th scope="col" style="font-size: 16px">내용</th>
+<!--                <th scope="col" style="font-size: 16px">내용</th>-->
 
             </tr>
         </thead>
@@ -17,8 +17,8 @@
             {% for faq in object_list %}
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td><a href="{% url 'faq:detail' pk=faq.id %}" target="_blank" style="font-size: 16px">{{faq.title}}</a></td>
-                <td><a href="{% url 'faq:detail' pk=faq.id %}" target="_blank" style="font-size: 16px">{{faq.contents}}</a></td>
+                <td style="width: 35%"><a href="{% url 'faq:detail' pk=faq.id %}" target="_blank" style="font-size: 16px;">{{faq.title}}</a></td>
+<!--                <td><a href="{% url 'faq:detail' pk=faq.id %}" target="_blank" style="font-size: 16px">{{faq.contents}}</a></td>-->
             </tr>
             {% endfor %}
         </tbody>

@@ -121,6 +121,12 @@
     .card-img-top {
         margin: 0 auto;
     }
+    .pagination{margin-top: 30px; text-align: center;}
+.pagelist{display: inline-block; margin-left: auto; margin-right: auto; list-style: none;}
+.pagination ul li{width: 32px; height: 32px; border: 1px solid #dddddd; float: left; margin-left: -1px;}
+        .pagination{margin-top: 5px; max-width: 250px;}
+    .pagelist{padding-left: 0; max-width: 415px;}
+    .pagination ul li{width: 30px; height: 30px; max-width: 415px;}
 </style>
     {% load humanize %}
     <div class="col-2">
@@ -173,4 +179,40 @@
             </div>
         </div>
     </div>
+<div class="box5">
+   <!-- Pagination -->
+    {% if products.has_other_pages %}
+   <nav aria-label="Page navigation">
+      <ul class="pagelist" >
+          {% if products.has_previous %}
+           <li>
+              <a style="text-decoration: none; color: #000" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+             </a>
+         </li>
+          {% else %}
+          <li><span>&laquo;</span></li>
+          {% endif %}
+
+          {% for i in products.paginator.page_range %}
+              {% if products.number == i %}
+                  <li><span>{{ i }}</span></li>
+              {% else %}
+                  <li><a style="text-decoration: none; color: #000" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+          {% endfor %}
+
+          {% if products.has_next %}
+          <li>
+              <a style="text-decoration: none; color: #000" href="?page={{products.next_page_number }}" aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+              </a>
+          </li>
+          {% else %}
+              <li><span>&raquo;</span></li>
+          {% endif %}
+      </ul>
+   </nav>
+      {% endif %}
+</div>
 {% endblock %}
